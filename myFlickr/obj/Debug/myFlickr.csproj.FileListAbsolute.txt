@@ -1,0 +1,17 @@
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\myFlickr.exe.config
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\myFlickr.exe
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\myFlickr.pdb
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\FlickrNet.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\obj\Debug\myFlickr.exe
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\obj\Debug\myFlickr.pdb
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\EntityFramework.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\EntityFramework.xml
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\x86\SQLite.Interop.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\System.Data.SQLite.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\System.Data.SQLite.xml
+C:\Users\Apple\Documents\Visual Studio 2013\Projects\myFlickr\myFlickr\obj\Debug\myFlickr.csprojResolveAssemblyReference.cache
