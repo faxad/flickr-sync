@@ -13,7 +13,7 @@ namespace myFlickr
 {
     class Program
     {
-        private async static Task DownloadFileAsync(string album, Photo photo)
+        private static void DownloadFile(string album, Photo photo)
         {
             string path = Directory.GetCurrentDirectory() + @"\" + album + @"\";
             string url = photo.OriginalUrl;
@@ -25,70 +25,58 @@ namespace myFlickr
             using (WebClient myWebClient = new WebClient())
             {
                 Console.WriteLine("Download started" + photo.Title);
-                await myWebClient.DownloadFileTaskAsync(url, path + photo.Title + Path.GetExtension(url));
+                myWebClient.DownloadFile(url, path + photo.Title + Path.GetExtension(url));
                 Console.WriteLine("Download finished" + photo.Title);
             }
         }
 
         static void Main(string[] args)
         {
-
-            using (var context = new FlickrContext())
-            {
-                var record =  context.Downloads.Where(f => 
-                    f.AlbumTitle == "Hello" && 
-                    f.Downloaded == true).FirstOrDefault();
-
-                if (record == null)
-                {
-                    context.Downloads.Add(
-                        new FlickrInfo()
-                        {
-                            AlbumTitle = "Hello",
-                            Downloaded = true
-                        }
-                    );
-                }
-                else
-                {
-                    record.Downloaded = false;
-                }
-
-                context.SaveChanges();
-            }
-
-            using (var context = new FlickrContext())
-            {
-
-                var artists = from a in context.Downloads
-                              select a;
-
-                foreach (var artist in artists)
-                {
-                    Console.WriteLine(artist.AlbumTitle);
-                    Console.WriteLine(artist.Downloaded);
-                }
-            }
-
             Flickr flickr = FlickrManager.GetInstance();
             //if (flickr.IsAuthenticated)
             {
                 foreach (Photoset album in flickr.PhotosetsGetList())
                 {
                     Console.WriteLine(album.Title);
-                    foreach (Photo photo in flickr.PhotosetsGetPhotos(album.PhotosetId, PhotoSearchExtras.OriginalUrl))
-                    {
-
-                        PhotoInfo pi = flickr.PhotosGetInfo(photo.PhotoId);
-                        string u = pi.OriginalUrl;
-                        Task result = DownloadFileAsync(album.Title, photo);
-                        Console.WriteLine(result.IsCompleted);
-                        if (result.IsCompleted)
+                    var tasks = Parallel.ForEach(
+                        flickr.PhotosetsGetPhotos(album.PhotosetId, PhotoSearchExtras.OriginalUrl),
+                        new ParallelOptions { MaxDegreeOfParallelism = 2 },
+                        photo =>
                         {
-                            //TODO: Write status to database / referesh ui
-                            Console.WriteLine(result.IsCompleted);
-                        }
-                    }
+                            using (var context = new FlickrContext())
+                            {
+                                var record = context.Downloads.Where(f =>
+                                    f.AlbumTitle == album.Title &&
+                                    f.PhotoId == photo.Title).FirstOrDefault();
+
+                                if (record == null || !record.Downloaded)
+                                {
+                                    if (record == null)
+                                    {
+                                        record = context.Downloads.Add(
+                                            new FlickrInfo()
+                                            {
+                                                AlbumTitle = album.Title,
+                                                PhotoId = photo.Title,
+                                                Downloaded = false
+                                            }
+                                        );
+
+                                        context.SaveChanges();
+                                        Console.WriteLine("New Entry Added in Database");
+                                    }
+
+                                    // Download Photo
+                                    DownloadFile(album.Title, photo);
+                                    record.Downloaded = true;
+                                    context.SaveChanges();
+                                    Console.WriteLine("Database Updated");
+                                }
+
+                                context.SaveChanges();
+                            }
+
+                        });
                 }
             }
 
