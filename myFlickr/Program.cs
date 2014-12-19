@@ -8,28 +8,12 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using myFlickr.Helpers;
 
 namespace myFlickr
 {
     class Program
     {
-        private static void DownloadFile(string album, Photo photo)
-        {
-            string path = Directory.GetCurrentDirectory() + @"\" + album + @"\";
-            string url = photo.OriginalUrl;
-
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
-            Console.WriteLine(photo.Title);
-            using (WebClient myWebClient = new WebClient())
-            {
-                Console.WriteLine("Download started" + photo.Title);
-                myWebClient.DownloadFile(url, path + photo.Title + Path.GetExtension(url));
-                Console.WriteLine("Download finished" + photo.Title);
-            }
-        }
-
         static void Main(string[] args)
         {
             Flickr flickr = FlickrManager.GetInstance();
@@ -67,7 +51,7 @@ namespace myFlickr
                                     }
 
                                     // Download Photo
-                                    DownloadFile(album.Title, photo);
+                                    FileManager.Download(album.Title, photo);
                                     record.Downloaded = true;
                                     context.SaveChanges();
                                     Console.WriteLine("Database Updated");
