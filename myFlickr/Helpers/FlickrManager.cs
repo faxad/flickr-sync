@@ -1,9 +1,5 @@
 ﻿using FlickrNet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace myFlickr.Helpers
 {
@@ -37,27 +33,6 @@ namespace myFlickr.Helpers
 
             return flickr;
         }
-
-        //public static Flickr GetAuthInstance()
-        //{
-        //    var f = new Flickr(ApiKey, SharedSecret);
-        //    f.OAuthAccessToken = OAuthToken.Token;
-        //    f.OAuthAccessTokenSecret = OAuthToken.TokenSecret;
-        //    return f;
-        //}
-
-        //public static OAuthAccessToken OAuthToken
-        //{
-        //    get
-        //    {
-        //        return Properties.Settings.Default.OAuthToken;
-        //    }
-        //    set
-        //    {
-        //        Properties.Settings.Default.OAuthToken = value;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
 
     }
 }

@@ -19,12 +19,11 @@ namespace myFlickr.Helpers
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
-            Console.WriteLine(photo.Title);
             using (WebClient myWebClient = new WebClient())
             {
-                Console.WriteLine("Download started" + photo.Title);
+                Console.WriteLine("Download started: " + photo.Title);
                 myWebClient.DownloadFile(url, path + photo.Title + Path.GetExtension(url));
-                Console.WriteLine("Download finished" + photo.Title);
+                Console.WriteLine("Finished downloading: " + photo.Title);
             }
         }
     }

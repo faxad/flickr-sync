@@ -12,3 +12,4 @@ C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug
 C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\bin\Debug\System.Data.SQLite.xml
 C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\obj\Debug\myFlickr.exe
 C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\obj\Debug\myFlickr.pdb
+C:\Users\Apple\documents\visual studio 2013\Projects\myFlickr\myFlickr\obj\Debug\myFlickr.csprojResolveAssemblyReference.cache

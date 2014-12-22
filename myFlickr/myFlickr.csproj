@@ -103,9 +103,7 @@
     <Content Include="Dependencies\SQLite\x64\SQLite.Interop.dll" />
     <Content Include="Dependencies\SQLite\x86\SQLite.Interop.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Libraries\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
       <Visible>False</Visible>
