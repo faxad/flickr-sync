@@ -5,6 +5,7 @@ namespace myFlickr.Helpers
 {
     public class FlickrManager
     {
+        // TODO: Change the keys (don't even bother trying the below mentioned ones!)
         private const string ApiKey = "3a1a590bba70d9d0407a182c541e4816";
         private const string SharedSecret = "826cd4a36a17aaaf";
         public static Flickr GetInstance()
